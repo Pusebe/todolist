@@ -18,7 +18,7 @@ const taskSchema = {
 const Task = mongoose.model("Task", taskSchema);
 //introduzco datos en la tabla
 const newTask = new Task({
-    task: "FOllarme a lady di",
+    task: "Tienes que tener al menos una cosa marcada Jude tonta!",
 })
 
 app.get("/", (req, res) => {
@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
                     console.log(err);
                 }
                 else{
-                    console.log(newTask + " fue añadida a la base de datos");
+                    console.log(newTask + " Tienes que tener al menos una cosa marcada Jude tonta!");
                 }
             });
             res.redirect("/");
@@ -41,6 +41,21 @@ app.get("/", (req, res) => {
      });
 
 });
+
+app.post("/delete", (req, res) =>{
+
+    console.log(req.body.delete); 
+    Task.findByIdAndRemove( req.body.delete, (err)=>{
+        if(err){
+            console.log(err);
+        }else{
+            console.log("todo bien");
+        }
+    });
+
+    res.redirect("/");
+})
+
 
 app.post("/", (req, res) =>{
 
