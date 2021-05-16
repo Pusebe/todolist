@@ -16,15 +16,16 @@
         <% newTask.forEach((e)=>{ %>
             <form action="/delete" method="post">
                 <div class="item">
-                    <input type="checkbox" onChange="this.form.submit()" value="<%=e._id%>" name ="delete" >
+                    <input type="hidden" name="address" value = "<%= dayOfWeek %>"></input>
+                    <input type="checkbox" onChange="this.form.submit()" value="<%=e._id%>" name ="delete" ></input>
                     <p><%=e.task%></p>
                 </div>
             </form>
         <%})%>
 
         <form action="/" method="post" class="item">
-            <input type="text" name="addTask" id="" placeholder="Nueva tarea" autocomplete="off" autofocus>
-            <button type="submit">+</button>
+            <input type="text" name="addTask" id="" placeholder="Nueva tarea" autocomplete="off" autofocus></input>
+            <button type="submit" name="list" value ="<%= dayOfWeek %>">+</button>
         </form>
     </div>
 </body>
